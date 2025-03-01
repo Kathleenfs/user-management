@@ -7,6 +7,7 @@ import { UserRegistrationRoutingModule } from './user-registration-routing.modul
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select'
 
 @NgModule({
   declarations: [UserRegistrationComponent],
@@ -16,7 +17,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UserRegistrationRoutingModule,
     MatInputModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class UserRegistrationModule{}

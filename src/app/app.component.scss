@@ -1,0 +1,21 @@
+.gradient-header {
+  background-image: linear-gradient(90deg, #cc092f 40%, #b81570 90%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: all 0.3s ease-in-out; 
+  z-index: 1000;
+}
+
+.gradient-header.scrolled {
+  padding: 10px; 
+  font-size: 0.9em;
+}
+
+.content {
+  margin-top: 100px; 
+  padding: 20px;
+}
