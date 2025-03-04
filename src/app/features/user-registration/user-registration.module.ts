@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UserRegistrationComponent } from './user-registration.component';
+import { UserRegistrationComponent } from './components/user-registration.component';
 import { UserRegistrationRoutingModule } from './user-registration-routing.module';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [UserRegistrationComponent],
@@ -19,6 +20,6 @@ import { MatSelectModule } from '@angular/material/select'
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule
-  ]
+  ],
 })
-export class UserRegistrationModule{}
+export class UserRegistrationModule { }

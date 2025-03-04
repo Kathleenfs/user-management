@@ -1,0 +1,71 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="form-container">
+  <h1 class="title">Cadastro de Usuário</h1>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Nome Completo</mat-label>
+    <input matInput formControlName="fullName" placeholder="Digite seu nome" required maxlength="40">
+    <mat-error *ngIf="userForm.get('fullName')?.hasError('required')">
+      O nome é obrigatório
+    </mat-error>
+    <mat-error
+      *ngIf="userForm.get('fullName')?.hasError('invalidName') && !userForm.get('fullName')?.hasError('required')">
+      O nome fornecido é inválido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>E-mail</mat-label>
+    <input matInput type="email" formControlName="email" placeholder="Digite seu email" required maxlength="40">
+    <mat-error *ngIf="userForm.get('email')?.hasError('required')">
+      O e-mail é obrigatório
+    </mat-error>
+    <mat-error *ngIf="userForm.get('email')?.hasError('invalidEmail') && !userForm.get('email')?.hasError('required')">
+      O e-mail fornecido é inválido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Número de celular</mat-label>
+    <input matInput type="tel" formControlName="phone" placeholder="Digite seu Número de celular" required
+      maxlength="11" />
+    <mat-error *ngIf="userForm.get('phone')?.hasError('required')">
+      Número de celular é obrigatório
+    </mat-error>
+    <mat-error *ngIf="userForm.get('phone')?.hasError('invalidPhone') && !userForm.get('phone')?.hasError('required')">
+      Número de celular inválido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Data de Nasc.</mat-label>
+    <input matInput type="date" formControlName="birthDate" required>
+    <mat-error *ngIf="userForm.get('birthDate')?.hasError('required')">
+      A data de nascimento é obrigatória
+    </mat-error>
+    <mat-error
+      *ngIf="userForm.get('birthDate')?.hasError('invalidBirthDate') && !userForm.get('birthDate')?.hasError('required')">
+      A data de nascimento não pode ser maior que a data atual
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Tipo de Usuário</mat-label>
+    <mat-select formControlName="userType" required>
+      <mat-option value="Administrador">Administrador</mat-option>
+      <mat-option value="Editor">Editor</mat-option>
+      <mat-option value="Visualizador">Visualizador</mat-option>
+    </mat-select>
+    <mat-error *ngIf="userForm.get('userType')?.hasError('required')">Selecione um tipo de usuário</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" [disabled]="!userForm.valid">
+    Salvar
+  </button>
+
+  <div *ngIf="showSuccessMessage" class="success-overlay">
+    <div class="success-message">
+      <h1>Sucesso!</h1>
+      <p>Os dados foram salvos com sucesso.</p>
+      <button mat-raised-button color="primary" (click)="closeSuccessMessage()">Fechar</button>
+    </div>
+  </div>
+</form>

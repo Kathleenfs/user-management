@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from './services/user.service';
-import { User } from './models/user.model';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.model';
+import { ValidationService } from '../services/validation.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -16,10 +17,10 @@ export class UserRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required]],
-      birthDate: ['', [Validators.required]],
+      fullName: ['', [Validators.required, Validators.minLength(3), ValidationService.fullNameValidator]],
+      email: ['', [Validators.required, Validators.email, ValidationService.emailValidator]],
+      phone: ['', [Validators.required, ValidationService.phoneValidator]],
+      birthDate: ['', [Validators.required, ValidationService.birthDateValidator]],
       userType: ['', [Validators.required]]
     });
   }
