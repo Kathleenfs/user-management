@@ -35,8 +35,15 @@
     </mat-select>
     <mat-error *ngIf="userForm.get('userType')?.hasError('required')">Selecione um tipo de usuário</mat-error>
   </mat-form-field>
-
-  <button mat-raised-button type="submit" [disabled]="!userForm.valid" class="form-button">
+  <button mat-raised-button type="submit" [disabled]="!userForm.valid">
     Salvar
   </button>
+
+  <div *ngIf="showSuccessMessage" class="success-overlay">
+    <div class="success-message">
+      <h1>Sucesso!</h1>
+      <p>Os dados foram salvos com sucesso.</p>
+      <button mat-raised-button color="primary" (click)="closeSuccessMessage()">Fechar</button>
+    </div>
+  </div>
 </form>

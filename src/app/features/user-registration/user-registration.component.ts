@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { UserService, User } from '../user.service';
+import { UserService } from './services/user.service';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-user-registration',
@@ -9,23 +10,33 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UserRegistrationComponent implements OnInit {
   userForm!: FormGroup;
+  showSuccessMessage: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      fullName: ['', Validators.required],
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^[0-9]+$/)]],
-      birthDate: ['', Validators.required],
-      userType: ['', Validators.required]
+      phone: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
+      userType: ['', [Validators.required]]
     });
   }
 
+
   onSubmit(): void {
     if (this.userForm.valid) {
-      // this.userService.addUser(this.userForm.value);
-      console.log(this.userForm.value);
+      const newUser: User = this.userForm.value;
+      this.userService.addUser(newUser);
+      console.log('Usuário cadastrado:', newUser);
+
+      this.showSuccessMessage = true;
     }
+  }
+
+  closeSuccessMessage(): void {
+    this.showSuccessMessage = false;
+    this.userForm.reset();
   }
 }
