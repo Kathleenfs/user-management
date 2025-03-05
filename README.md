@@ -49,10 +49,10 @@ npm test -- --coverage
 
 | Tipo           | Cobertura |
 |----------------|-----------|
-| Statements     | 97.43%    |
-| Branches       | 88.23%   |
-| Functions      | 100%      |
-| Lines          | 96.92%    |
+| Statements     |  98.61%   |
+| Branches       |  94.11%   |
+| Functions      |  100%     |
+| Lines          |  98.36%   |
 
 🏆 Este projeto alcança **90%** de cobertura de testes unitários.
 
