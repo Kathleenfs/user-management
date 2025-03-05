@@ -7,18 +7,22 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 export class ValidationService {
 
   static fullNameValidator(control: AbstractControl): ValidationErrors | null {
-    let value = control.value;
+    const value: string = control.value;
 
     if (!value) return null;
 
+    const containsNumbers = /\d/.test(value);
+    if (containsNumbers) {
+      return { invalidName: true };
+    }
 
-    const sanitizedValue = value.replace(/\d/g, '');
-    if (sanitizedValue !== value) {
-      control.setValue(sanitizedValue);
+    const sanitizedValue = value.replace(/\s+/g, '');
+
+    if (sanitizedValue.trim().length === 0) {
+      return { invalidName: true };
     }
 
     const exceedsMaxLength = sanitizedValue.length > 40;
-
     const hasOnlyRepeatingCharacters = /^([a-zA-ZÀ-ÿ\u00f1\u00d1])\1*$/.test(sanitizedValue);
 
     if (exceedsMaxLength || hasOnlyRepeatingCharacters) {
@@ -27,6 +31,7 @@ export class ValidationService {
 
     return null;
   }
+
 
   static emailValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value;

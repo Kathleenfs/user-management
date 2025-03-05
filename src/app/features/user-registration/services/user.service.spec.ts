@@ -17,8 +17,8 @@ describe('UserService', () => {
       fullName: 'Teste Usuário',
       email: 'teste@email.com',
       phone: '11987654321',
-      birthDate: new Date('2000-01-01'),
-      userType: 'admin'
+      birthDate: new Date('01-01-2001'),
+      userType: 'Visualizador'
     };
 
     service.addUser(user);

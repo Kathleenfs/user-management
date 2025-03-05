@@ -7,6 +7,6 @@ module.exports = {
   },
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   collectCoverage: true,
-  coverageDirectory: '<rootDir>/coverage',
+  coverageDirectory: 'coverage',
   coverageReporters: ['html', 'text-summary']
 };
