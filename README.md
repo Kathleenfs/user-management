@@ -1,27 +1,58 @@
-# UserManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+## Estrutura do Projeto
+O projeto segue uma organização modular para facilitar a manutenção e escalabilidade:
+```plaintext
+              user-registration/                 # Módulo principal para gerenciamento de usuários
+              ├── components/                    # Componentes do módulo
+              │   ├── user-registration.component.ts       # Lógica do componente principal
+              │   ├── user-registration.component.html     # Template do componente principal
+              │   ├── user-registration.component.spec.ts  # Testes unitários do componente principal
+              │   ├── user-registration.component.scss     # Estilos do componente principal
+              │
+              ├── services/                      # Serviços do módulo
+              │   ├── user.service.ts            # Lógica para gerenciar usuários (mock do backend)
+              │   ├── user.service.spec.ts       # Testes unitários para o UserService
+              │   ├── validation.service.ts      # Serviço de validações customizadas
+              │   ├── validation.service.spec.ts # Testes unitários para o ValidationService
+              │
+              ├── models/                        # Modelos de dados usados no módulo
+              │   ├── user.model.ts              # Modelo de dados para representar um usuário
+              │
+              ├── user-registration.module.ts    # Declarações e importações do módulo
+              ├── user-registration-routing.module.ts # Configuração de rotas para o módulo
+```
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## Como Executar o Projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   cd seu-repositorio
+2. **Instale as Dependências**:
+   ```bash
+    npm install
 
-## Build
+3. **Execute o projeto**:
+   ```bash
+    ng serve
+## Como Executar os Testes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Executar todos os testes com cobertura:
+```bash
+npm test -- --coverage
+```
 
-## Running unit tests
+## Cobertura de Testes
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Tipo           | Cobertura |
+|----------------|-----------|
+| Statements     |  98.61%   |
+| Branches       |  94.11%   |
+| Functions      |  100%     |
+| Lines          |  98.36%   |
 
-## Running end-to-end tests
+🏆 Este projeto alcança **90%** de cobertura de testes unitários.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
