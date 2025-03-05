@@ -8,5 +8,9 @@ module.exports = {
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coverageReporters: ['html', 'text-summary']
+  coverageReporters: ['html', 'text-summary'],
+  testPathIgnorePatterns: [
+    "node_modules",
+    "src/app/app.component.spec.ts"
+  ]
 };

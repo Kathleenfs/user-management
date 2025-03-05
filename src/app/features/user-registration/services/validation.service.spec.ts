@@ -8,6 +8,7 @@ describe('ValidationService', () => {
     expect(ValidationService.fullNameValidator(new FormControl('1111'))).toEqual({ invalidName: true });
     expect(ValidationService.fullNameValidator(new FormControl('AAAAAAAAAA'))).toEqual({ invalidName: true });
     expect(ValidationService.fullNameValidator(new FormControl('UmNomeMuitoGrandeQueExcedeOLimiteDeCaracteres'))).toEqual({ invalidName: true });
+    expect(ValidationService.fullNameValidator(new FormControl('     '))).toEqual({ invalidName: true });
   });
 
   it('deve validar e-mails corretamente', () => {
